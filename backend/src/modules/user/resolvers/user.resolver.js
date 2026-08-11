@@ -1,8 +1,5 @@
 // Models
-const UserModel = require("../models/user.model");
-
-// Services
-const Service = require("../services/user.service");
+import UserModel from "../models/user.model.js";
 
 // Query
 // ----------------------------------------------------------------
@@ -18,12 +15,10 @@ const me = async (root, args, { req, next }) => {
 
 // Mutation
 // ----------------------------------------------------------------
-/* Update Me the profile of current user */
-const updateMe = async (root, args, { req, next }) => {
+/* Update me the profile of current user */
+const updateMe = async (root, { dataInput }, { req, next }) => {
   try {
-    const currentUser = await UserModel.findById(req.session.userId);
-
-    const updatedUser = await Service.processUpdateMe(currentUser, args);
+    const updatedUser = await UserModel.findByIdAndUpdate(req.session.userId, dataInput, { new: true });
     return updatedUser;
   } catch (error) {
     return next(error);
@@ -41,4 +36,4 @@ const userResolver = {
   },
 };
 
-module.exports = userResolver;
+export default userResolver;

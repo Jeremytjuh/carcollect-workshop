@@ -1,15 +1,13 @@
-require("./config/alias_config");
+import cors from "cors";
+import helmet from "helmet";
+import express from "express";
+import mongoose from "mongoose";
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
 
-const cors = require("cors");
-const helmet = require("helmet");
-const express = require("express");
-const mongoose = require("mongoose");
-const { ApolloServer } = require("@apollo/server");
-const { expressMiddleware } = require("@apollo/server/express4");
-
-const { corsOptions } = require("@/helpers/cors.helper");
-const { executableSchema } = require("@/graphql");
-const { version, name } = require("./package.json");
+import { corsOptions } from "#helpers/cors.helper.js";
+import { executableSchema } from "#graphql/index.js";
+import packageJson from "./package.json" with { type: "json" };
 
 const env = process.env.APP_ENVIRONMENT || "local";
 const port = process.env.PORT || 8000;
@@ -46,7 +44,7 @@ Server.use((req, res, next) => {
 Server.get("/", (req, res) => res.send({
   name: "Game & Chill",
   message: "We are up and running!",
-  version: `v${version}`,
+  version: `v${packageJson.version}`,
 }));
 
 // Health route
@@ -104,7 +102,7 @@ mongoose.connect(process.env.DATABASE_URI).then(() => {
   Server.listen(port);
   console.info(`🚀 ${env || "local development"} server ready at ${port}\n`);
   console.info("Using:");
-  console.info(`- App: ${name}`);
+  console.info(`- App: ${packageJson.name}`);
   console.info(`- Started at: ${new Date()}`);
 }).catch(error => {
   console.error(error);

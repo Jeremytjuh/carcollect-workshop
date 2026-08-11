@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "paths": {
-      "@/*": ["./src/*"],
-      "@/helpers/*": ["./src/utils/helpers/*"],
-      "@/validation/*": ["./src/utils/validation/*"],
-      "@/security/*": ["./src/utils/security/*"],
-      "@/constants/*": ["./src/utils/constants/*"],
+      "#security/*": ["./src/utils/security/*"],
+      "#constants/*": ["./src/utils/constants/*"],
+      "#helpers/*": ["./src/utils/helpers/*"],
+      "#validation/*": ["./src/utils/validation/*"],
+      "#services/*": ["./src/services/*"]
     }
-  },
+  }
 }

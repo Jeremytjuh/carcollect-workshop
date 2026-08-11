@@ -6,10 +6,8 @@ export const UPDATE_ME = gql`
     updateMe(dataInput: $dataInput) {
       id
       email
-      last_name
       first_name
-
-      # 1.3. Add field
+      last_name
     }
   }
 `;

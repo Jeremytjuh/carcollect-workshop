@@ -1,10 +1,10 @@
-const gql = require("graphql-tag");
-const { makeExecutableSchema } = require("@graphql-tools/schema");
-const { mergeTypeDefs, mergeResolvers } = require("@graphql-tools/merge");
+import gql from "graphql-tag";
+import { makeExecutableSchema } from "@graphql-tools/schema";
+import { mergeTypeDefs, mergeResolvers } from "@graphql-tools/merge";
 
 // Modules Resolvers | Schemas
-const { userSchemas, userResolvers } = require("@/modules/user");
-const { gameEventSchemas, gameEventResolvers } = require("@/modules/game_event");
+import { userSchemas, userResolvers } from "#modules/user/index.js";
+import { gameEventSchemas, gameEventResolvers } from "#modules/game_event/index.js";
 
 const rootSchema = gql`
   # {Root Schema}
@@ -31,7 +31,7 @@ const typeDefs = [
   rootSchema,
 ];
 
-const executableSchema = () => {
+export const executableSchema = () => {
   const mergedTypeDefs = mergeTypeDefs(typeDefs);
   const mergedResolvers = mergeResolvers(resolvers);
 
@@ -39,6 +39,6 @@ const executableSchema = () => {
   return schema;
 };
 
-module.exports = {
+export default {
   executableSchema,
 };

@@ -1,53 +1,8 @@
 extend type Query {
-  # 2.1. Create a new query
-  getGameEvents: GameEventList
+  getGameEvent: GameEvent
 }
 
-extend type Mutation {
-  # 2.3. GraphQL mutation resolver/schema
-  updateGameEvent(gameEventId: ID!, dataInput: GameEventInput): GameEvent
-  # 2.4. Create a GraphQL mutation for the DELETE operation
-}
-
-# Game event list
-# --------------------
-type GameEventList {
-  total: Int
-  game_events: [GameEvent]
-}
-
-# Game event base type
-# --------------------
 type GameEvent {
-  id: ID
+  id: ID!
   title: String
-  description: String
-  platform: String
-  voice: Boolean
-  main_image_url: String
-
-  game: Game
-
-  created_by: User
-  participants: [User]
-}
-
-input GameEventInput {
-  title: String
-  # 2.3. GraphQL mutation resolver/schema
-}
-
-# Game base type
-# --------------------
-type Game {
-  title: String
-  description: String
-  tags: [String]
-  image: String
-}
-
-input GameInput {
-  title: String
-  description: String
-  tags: [String]
 }

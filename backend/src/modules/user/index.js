@@ -1,17 +1,17 @@
-const userResolver = require("./resolvers/user.resolver");
+import userResolver from "./resolvers/user.resolver.js";
 
 // Utils
-const { loadGraphQLFile } = require("@/helpers/graphql.helper");
+import { loadGraphQLFile } from "#helpers/graphql.helper.js";
 
-const userResolvers = [
+export const userResolvers = [
   userResolver,
 ];
 
-const userSchemas = [
-  loadGraphQLFile(__dirname, "graphql/user.graphql"),
+export const userSchemas = [
+  loadGraphQLFile(import.meta.url, "graphql/user.graphql"),
 ];
 
-module.exports = {
+export default {
   userResolvers,
   userSchemas,
 };

@@ -1,17 +1,17 @@
-const gameEventResolver = require("./resolvers/game_event.resolver");
+import gameEventResolver from "./resolvers/game_event.resolver.js";
 
 // Utils
-const { loadGraphQLFile } = require("@/helpers/graphql.helper");
+import { loadGraphQLFile } from "#helpers/graphql.helper.js";
 
-const gameEventResolvers = [
+export const gameEventResolvers = [
   gameEventResolver,
 ];
 
-const gameEventSchemas = [
-  loadGraphQLFile(__dirname, "graphql/game_event.graphql"),
+export const gameEventSchemas = [
+  loadGraphQLFile(import.meta.url, "graphql/game_event.graphql"),
 ];
 
-module.exports = {
+export default {
   gameEventResolvers,
   gameEventSchemas,
 };

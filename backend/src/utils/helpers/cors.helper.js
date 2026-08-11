@@ -1,5 +1,5 @@
 /* Cors Options */
-const corsOptions = {
+export const corsOptions = {
   credentials: true,
   maxAge: 2592000,
   origin: process.env.APP_ENVIRONMENT === "local" && [
@@ -9,6 +9,6 @@ const corsOptions = {
   ],
 };
 
-module.exports = {
+export default {
   corsOptions,
 };

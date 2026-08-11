@@ -4,12 +4,11 @@
     "module": "esnext",
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "paths": {
       "@/components": ["./src/components/index"],
       "@/constants/*": ["./src/utils/constants/*"],
       "@/helpers/*": ["./src/utils/helpers/*"],
-      "@/hooks": ["src/hooks/index"],
+      "@/hooks": ["./src/hooks/index"],
       "@/lang": ["./src/lang/index"],
       "@/layouts": ["./src/layouts/index"],
       "@/public/*": ["./public/*"],

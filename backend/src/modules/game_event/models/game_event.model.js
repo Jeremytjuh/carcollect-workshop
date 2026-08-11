@@ -1,24 +1,11 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const gameEventSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: String,
-  platform: String,
-  voice: Boolean,
-  main_image_url: String,
-
-  game: {
-    title: String,
-    description: String,
-    tag: String,
-  },
-
-  // Mongoose Schema
-  created_by: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  participants: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+const schema = new mongoose.Schema({
+  title: String,
 }, {
   timestamps: true,
 });
 
-const GameEvent = mongoose.model("GameEvent", gameEventSchema);
-module.exports = GameEvent;
+const gameEvent = mongoose.model("GameEvent", schema);
+
+export default gameEvent;
