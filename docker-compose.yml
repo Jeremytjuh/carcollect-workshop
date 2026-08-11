@@ -2,8 +2,6 @@ services:
   frontend:
     container_name: frontend-workshop
     build: ./frontend
-      # context: ./frontend
-      # dockerfile: ./frontend/config/docker/Dockerfile
     ports:
       - "3000:3000"
     volumes:
@@ -13,8 +11,6 @@ services:
   backend:
     container_name: backend-workshop
     build: ./backend
-      # context: ./backend
-      # dockerfile: ./backend/config/docker/Dockerfile
     ports:
       - "5000:5000"
       - "10000:10000"
