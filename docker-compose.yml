@@ -1,0 +1,36 @@
+services:
+  frontend:
+    container_name: frontend-workshop
+    build: ./frontend
+      # context: ./frontend
+      # dockerfile: ./frontend/config/docker/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+  backend:
+    container_name: backend-workshop
+    build: ./backend
+      # context: ./backend
+      # dockerfile: ./backend/config/docker/Dockerfile
+    ports:
+      - "5000:5000"
+      - "10000:10000"
+    volumes:
+      - ./backend:/app
+      - ./backend/node_modules:/app/node_modules
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: mongodb-workshop
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
