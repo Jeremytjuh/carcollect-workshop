@@ -15,7 +15,7 @@ const me = async (root, args, { req, next }) => {
 
 // Mutation
 // ----------------------------------------------------------------
-/* Update me the profile of current user */
+/* Update me - updates the current user */
 const updateMe = async (root, { dataInput }, { req, next }) => {
   try {
     const updatedUser = await UserModel.findByIdAndUpdate(req.session.userId, dataInput, { new: true });

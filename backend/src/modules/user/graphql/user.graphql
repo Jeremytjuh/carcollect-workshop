@@ -6,8 +6,6 @@ extend type Mutation {
   updateMe(dataInput: MeInput): User
 }
 
-# User base type
-# --------------------
 type User {
   id: ID
   first_name: String

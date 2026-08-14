@@ -15,10 +15,10 @@ const getGameEvent = async (root, { gameEventId }, { next }) => {
 };
 
 // Resolvers
-const userResolver = {
+const gameEventResolver = {
   Query: {
     getGameEvent,
   },
 };
 
-export default userResolver;
+export default gameEventResolver;
