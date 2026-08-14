@@ -11,7 +11,7 @@
   },
   "scripts": {
     "clean": "rm -rf node_modules .turbo",
-    "dev": "node --env-file=./config/.env --inspect=0.0.0.0:10000 --watch-path=src --watch-path=server.js server.js",
+    "dev": "node --env-file=./config/.env --inspect=0.0.0.0:16000 --watch-path=src --watch-path=server.js server.js",
     "lint:fix": "eslint . --fix",
     "lint": "eslint .",
     "start": "node server.js"

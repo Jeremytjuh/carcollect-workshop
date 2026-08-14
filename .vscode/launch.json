@@ -6,7 +6,7 @@
       "request": "attach",
       "name": "Attach to Backend",
       "address": "localhost",
-      "port": 10000,
+      "port": 16000,
       "localRoot": "${workspaceFolder}/backend",
       "remoteRoot": "/app",
       "restart": true

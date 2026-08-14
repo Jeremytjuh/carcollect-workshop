@@ -2,4 +2,4 @@
 export const isServer = typeof window === "undefined";
 
 /* Domain URLs */
-export const API_URL = "http://localhost:5000";
+export const API_URL = "http://localhost:8000";
