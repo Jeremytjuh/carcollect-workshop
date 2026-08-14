@@ -70,8 +70,7 @@ export default [
 
       // ESM rules
       "import/no-unresolved": "error",
-      "import/no-commonjs": "error",
-      "import/extensions": ["error", "always"]
+      "import/no-commonjs": "error"
     }
   }
 ];
