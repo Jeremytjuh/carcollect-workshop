@@ -14,6 +14,7 @@ What are we going to create?
 ## About us & our tech stack
 ### Frontend (FE) Setup
 - General React + MUI
+- useState
 - Project stucture
 
 ### Backend (BE) Setup  
