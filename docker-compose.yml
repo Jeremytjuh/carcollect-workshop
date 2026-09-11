@@ -22,7 +22,7 @@ services:
 
   mongo:
     container_name: mongodb-workshop
-    image: mongo:latest
+    image: mongo:8.0.4
     ports:
       - "27017:27017"
     volumes:
