@@ -1,14 +1,14 @@
 const primary = {
-  dark: "#B71C1C",
-  main: "#E53935",
-  light: "#EF5350",
+  dark: "#010406",
+  main: "#04151F",
+  light: "#E6E8E9",
   contrastText: "#FFFFFF",
 };
 
 const secondary = {
-  dark: "#880E4F",
-  main: "#EC407A",
-  light: "#F48FB1",
+  dark: "#0C6E73",
+  main: "#119DA4",
+  light: "#B2E7EA",
   contrastText: "#FFFFFF",
 };
 
@@ -43,6 +43,19 @@ const text = {
   disabled: "#BDBDBD",
 };
 
+const vehicle = {
+  car: "#9bbcef",
+  truck: "#fac8a4",
+  motorcycle: "#bda3fb",
+  bicycle: "#a9ffc9",
+  tricycle: "#f6dd94",
+  scooter: "#93efff",
+  skateboard: "#f29bc7",
+  bus: "#feb3b3",
+  tram: "#b6f7f0",
+  train: "#c4c5fb",
+};
+
 const colorsDefault = {
   primary,
   secondary,
@@ -50,6 +63,7 @@ const colorsDefault = {
   success,
   background,
   text,
+  vehicle,
   action: {
     disabledBackground: "rgba(166, 166, 166, 0.2)",
   },

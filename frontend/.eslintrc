@@ -35,6 +35,8 @@
     }
   },
   "rules": {
+    "no-alert": "off",
+
     // Only add parents when needed so `fn = (param1) =>` should be just `fn = param1 =>`
     "arrow-parens": ["error", "as-needed"],
 

@@ -1,13 +1,13 @@
-import Link from "next/link";
 import { useQuery } from "@apollo/client";
+import Link from "next/link";
 
 // Core
 import { useTheme } from "@mui/material/styles";
-import { Avatar, Button, IconButton, AppBar as MuiAppBar, Stack, Toolbar, Tooltip, Typography } from "@mui/material";
-import { Chat, Favorite, Search, SportsEsports } from "@mui/icons-material";
-
-// Hooks
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Avatar, Button, IconButton, AppBar as MuiAppBar, Stack, Toolbar, Tooltip, Typography } from "@mui/material";
+import { Chat, Commute, Search } from "@mui/icons-material";
+
+import SwitchThemeField from "../../../components/field/switch_field/switch_theme.field";
 
 // GraphQL
 import { GET_ME } from "@/graphql";
@@ -27,23 +27,25 @@ function AppBar() {
   return (
     <MuiAppBar css={classes.appBar} component="nav">
       <Toolbar css={classes.toolbar}>
-        <div css={classes.logoSection}>
+        <Stack direction="row" alignItems="center" gap={1.5}>
           <IconButton
             component={Link}
             href="/overview"
             css={classes.logoIcon}
           >
-            <SportsEsports sx={{ color: "white", fontSize: "24px" }} />
+            <Commute sx={{ color: "white", fontSize: "24px" }} />
           </IconButton>
 
           {isDesktop && (
             <Typography css={classes.logoText}>
-              Game & Chill
+              CarCollection
             </Typography>
           )}
-        </div>
+        </Stack>
 
-        <Stack direction="row" gap={2}>
+        <Stack direction="row" alignItems="center" gap={2}>
+          <SwitchThemeField />
+
           {isDesktop ? (
             <Button
               component={Link}
@@ -56,21 +58,6 @@ function AppBar() {
           ) : (
             <IconButton href="/overview">
               <Search />
-            </IconButton>
-          )}
-
-          {isDesktop ? (
-            <Button
-              component={Link}
-              href="/matches"
-              startIcon={<Favorite />}
-              css={classes.navButton}
-            >
-              Matches
-            </Button>
-          ) : (
-            <IconButton href="/matches">
-              <Favorite />
             </IconButton>
           )}
 

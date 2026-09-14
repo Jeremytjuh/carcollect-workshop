@@ -1,10 +1,7 @@
-import Link from "next/link";
-
 // Core
 import { Box, Chip, Divider, Stack, Typography } from "@mui/material";
 import { ChatBubbleOutline } from "@mui/icons-material";
 import { DefaultLayout } from "@/layouts";
-import { Button } from "@/components";
 
 function MessagesPage() {
   return (
@@ -22,7 +19,9 @@ function MessagesPage() {
         />
       </Stack>
 
-      <Divider sx={{ my: 2 }} />
+      <Box my={2}>
+        <Divider />
+      </Box>
 
       <Box display="flex" alignItems="center" justifyContent="center" minHeight="50vh">
         <Stack alignItems="center" gap={2}>
@@ -38,16 +37,8 @@ function MessagesPage() {
           </Typography>
 
           <Typography variant="body2" color="textDisabled">
-            Start sliding into some DMs
+            Start a conversation
           </Typography>
-
-          <Button
-            component={Link}
-            href="/matches"
-            variant="outlined"
-          >
-            View your matches
-          </Button>
         </Stack>
       </Box>
     </DefaultLayout>

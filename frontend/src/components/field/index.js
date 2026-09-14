@@ -1,3 +1,6 @@
+// Date field
+export { default as DateField } from "./date_field/date.field";
+
 // Number field
 export { default as NumberField } from "./number_field/number.field";
 

@@ -11,7 +11,7 @@ function DefaultLayout(props) {
     <Fragment>
       <Head>
         <title>
-          {`${title} | Game & Chill`}
+          {`${title} | CarCollection`}
         </title>
       </Head>
 

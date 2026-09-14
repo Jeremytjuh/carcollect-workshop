@@ -1,6 +1,6 @@
 {
-  "name": "game-chill-backend",
-  "description": "Game & Chill",
+  "name": "car-collection-backend",
+  "description": "CarCollection - A CarCollect workshop",
   "version": "1.0.0",
   "main": "server.js",
   "private": true,

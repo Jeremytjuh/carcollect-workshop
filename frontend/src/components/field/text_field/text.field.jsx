@@ -19,7 +19,6 @@ function TextField(props) {
     control,
   });
 
-  // TODO: error messages do not work on nested names for example other.color
   const errorText = errors?.[name];
 
   return (

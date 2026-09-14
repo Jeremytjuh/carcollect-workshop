@@ -1,34 +1,50 @@
-import { Fragment } from "react";
+import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
-// import { useMutation } from "@apollo/client";
+import { Fragment } from "react";
 
 // Core
-import { Alert, DialogActions, DialogContent, DialogTitle, Stack } from "@mui/material";
+import { Alert, DialogActions, DialogContent, DialogTitle, Grid } from "@mui/material";
 import { Button } from "@/components";
-import { TextField } from "@/fields";
+import { /* NumberField, */ /* DateField, */ TextField } from "@/fields";
+
+// Utils
+import { setUpdateUserValues } from "./_default_values";
 
 // GraphQL
-// Import GraphQL query
+import { UPDATE_ME } from "@/graphql";
+
+// Assignment 2
+// ----------------------------------------------------------------
+// Add Phone Number as an input in the profile update form
+
+// Assignment 3
+// ----------------------------------------------------------------
+// Add Birth Date as an input in the profile update form and add it to the User model
 
 function ProfileUpdateForm(props) {
-  const {
-    user,
-    onClose,
-  } = props;
+  const { user, onClose } = props;
 
-  const { control, handleSubmit, formState, setError } = useForm({
-    defaultValues: {
-      first_name: user.first_name,
-      last_name: user.last_name,
-      // 1.3. Add fields
-    },
+  const [updateUser] = useMutation(UPDATE_ME);
+
+  const { control, handleSubmit, formState, /* setValue, */ setError } = useForm({
+    defaultValues: setUpdateUserValues(user),
     mode: "onChange",
   });
 
   const handleSubmitForm = async values => {
     try {
-      // 1.3. Form submission
-      console.log(values);
+      await updateUser({
+        variables: {
+          dataInput: {
+            first_name: values.first_name,
+            last_name: values.last_name,
+            email: values.email,
+            // birth_date: values.birth_date,
+            // phone_number: user.phone_number,
+          },
+        },
+      });
+
       onClose();
     } catch (error) {
       setError("submitForm", { message: error || "AA0x00" });
@@ -43,21 +59,51 @@ function ProfileUpdateForm(props) {
 
       <DialogContent>
         <form>
-          <Stack direction="row" gap={2}>
-            <TextField
-              name="first_name"
-              label="First name"
-              placeholder="Jesse"
-              control={control}
-            />
+          <Grid container spacing={2}>
+            <Grid size={6}>
+              <TextField
+                name="first_name"
+                label="First name"
+                placeholder="Jesse"
+                control={control}
+              />
+            </Grid>
 
-            <TextField
-              name="last_name"
-              label="Last name"
-              placeholder="Doe"
-              control={control}
-            />
-          </Stack>
+            <Grid size={6}>
+              <TextField
+                name="last_name"
+                label="Last name"
+                placeholder="Doe"
+                control={control}
+              />
+            </Grid>
+
+            <Grid size={6}>
+              <TextField
+                name="email"
+                label="Email"
+                placeholder="joe.doe@mail.com"
+                control={control}
+              />
+            </Grid>
+
+            {/* <Grid size={6}>
+              <NumberField
+                name="phone_number"
+                label="Phone"
+                control={control}
+              />
+            </Grid> */}
+
+            {/* <Grid size={6}>
+              <DateField
+                name="birth_date"
+                label="Date of Birth"
+                control={control}
+                setValue={setValue}
+              />
+            </Grid> */}
+          </Grid>
 
           {formState.errors?.submitForm && (
             <Alert severity="error">
@@ -75,8 +121,8 @@ function ProfileUpdateForm(props) {
         <Button
           color="primary"
           variant="contained"
-          loading={formState.isSubmitting}
           onClick={handleSubmit(handleSubmitForm)}
+          loading={formState.isSubmitting}
         >
           Confirm
         </Button>

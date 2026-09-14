@@ -72,12 +72,14 @@ function PickerBase(props) {
         <li {...params} key={option.value}>
           <Stack gap={1} alignItems="center">
             {option.startAdornment}
+
             <div>
-              <Typography variant="body1">
+              <Typography>
                 {option.textPrimary}
               </Typography>
+
               {option.textSecondary && (
-                <Typography variant="body1">
+                <Typography>
                   {option.textSecondary}
                 </Typography>
               )}
@@ -97,12 +99,14 @@ function PickerBase(props) {
       renderInput={params => (
         <TextField
           {...params}
-          //! Stop adding "required" here it causes issues with submitting forms
           fullWidth
           label={(
-            <Typography variant="body1" fontWeight="inherit">
+            <Typography fontWeight="inherit">
               {label}
-              {required && <Typography variant="inherit" display="inline" color="secondary" component="span"> *</Typography>}
+
+              {required && (
+                <Typography variant="inherit" display="inline" color="secondary" component="span"> *</Typography>
+              )}
             </Typography>
           )}
           size="small"

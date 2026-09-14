@@ -1,8 +1,13 @@
 // Core
-import { Box, Card, CardContent, CardHeader, Chip, Stack, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Card, CardContent, CardHeader, Chip, Stack, Typography } from "@mui/material";
 
-function ProfileInfo(props) {
+function ProfileInfoCard(props) {
   const { user } = props;
+
+  const theme = useTheme();
+
+  if (!user) return null;
 
   return (
     <Card>
@@ -10,59 +15,32 @@ function ProfileInfo(props) {
 
       <CardContent>
         <Stack spacing={3}>
-          <Box>
-            <Typography variant="subtitle2" gutterBottom color="textSecondary">
-              Platform
+          <div>
+            <Typography gutterBottom>
+              Favorite types of vehicle
             </Typography>
 
-            <Stack direction="row" spacing={1} flexWrap="wrap">
-              <Chip
-                label={user.platform}
-                size="small"
-                color="primary"
-                variant="outlined"
-              />
-            </Stack>
-          </Box>
-
-          <Box>
-            <Typography variant="subtitle2" gutterBottom color="textSecondary">
-              Favorite Genre
-            </Typography>
-
-            <Box display="flex" flexWrap="wrap" gap={1}>
-              <Chip
-                label={user.genre}
-                size="small"
-                variant="filled"
-                color="secondary"
-              />
-            </Box>
-          </Box>
-
-          <Box>
-            <Typography variant="subtitle2" gutterBottom color="textSecondary">
-              Play Style
-            </Typography>
-
-            <Typography variant="body2">
-              {user.playStyle || "-"}
-            </Typography>
-          </Box>
-
-          <Box>
-            <Typography variant="subtitle2" gutterBottom color="textSecondary">
-              Chill Availability
-            </Typography>
-
-            <Typography variant="body2">
-              {user.availability || "-"}
-            </Typography>
-          </Box>
+            {user.favorite_types?.length > 0 ? (
+              <Stack direction="row" flexWrap="wrap" gap={1}>
+                {user.favorite_types.map((favoriteType, index) => (
+                  <Chip
+                    key={`${index + 1}`}
+                    label={favoriteType}
+                    size="small"
+                    sx={{ backgroundColor: theme.palette.vehicle[favoriteType] }}
+                  />
+                ))}
+              </Stack>
+            ) : (
+              <Typography variant="body2" color="textSecondary">
+                No favorites selected
+              </Typography>
+            )}
+          </div>
         </Stack>
       </CardContent>
     </Card>
   );
 }
 
-export default ProfileInfo;
+export default ProfileInfoCard;

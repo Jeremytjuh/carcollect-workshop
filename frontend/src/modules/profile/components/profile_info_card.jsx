@@ -1,15 +1,26 @@
 import { useTheme } from "@mui/material/styles";
 import { Avatar, Box, Card, CardContent, CardMedia, Chip, Divider, Grid, Stack, Typography } from "@mui/material";
-import { Email, LocationOn, Person, Schedule } from "@mui/icons-material";
+import { Email, LocationOn, Person, Phone } from "@mui/icons-material";
 
 // Style
 import styles from "./profile_info_card.style";
 
-function ProfileInfo(props) {
+function ProfileInfoCard(props) {
   const { user } = props;
 
   const theme = useTheme();
   const classes = styles(theme);
+
+  const calculateAge = birthDate => {
+    if (!birthDate) return "Unknown";
+    const today = new Date();
+
+    const diffTime = Math.abs(today - new Date(birthDate));
+    const diffYears = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 365.5));
+    return diffYears;
+  };
+
+  if (!user) return "No user found";
 
   return (
     <Card css={classes.card}>
@@ -29,7 +40,7 @@ function ProfileInfo(props) {
       <CardContent>
         <div css={classes.persona}>
           <Avatar
-            src="https://static.vecteezy.com/system/resources/previews/049/423/252/non_2x/a-cool-mysterious-and-powerful-blue-masked-ninja-character-avatar-in-a-hooded-cloak-perfect-for-gaming-channels-esports-teams-and-social-media-profiles-free-vector.jpg"
+            src="https://cdn.vectorstock.com/i/500p/49/05/car-salesman-character-vector-9464905.jpg"
             css={classes.avatar}
           />
 
@@ -38,13 +49,13 @@ function ProfileInfo(props) {
               {`${user.first_name} ${user.last_name}`}
             </Typography>
 
-            <Typography variant="h6" color="primary">
-              {user.gamertag || "guest#1234"}
+            <Typography variant="h6" color="secondary">
+              {user.username || "guest#1234"}
             </Typography>
           </Box>
         </div>
 
-        <Typography variant="body1" color="textSecondary" paragraph>
+        <Typography color="textSecondary" mb={2}>
           {user.tagline}
         </Typography>
 
@@ -52,70 +63,78 @@ function ProfileInfo(props) {
           {user.bio}
         </Typography>
 
-        <Divider sx={{ my: 2 }} />
+        <Box my={2}>
+          <Divider />
+        </Box>
 
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, sm: 6 }}>
-            <Stack spacing={2}>
-              <Box display="flex" alignItems="center" gap={2}>
-                <Person sx={{ color: "primary.main" }} />
+            <Stack direction="row" alignItems="center" gap={2}>
+              <Person sx={{ color: "primary.main" }} />
 
-                <Box>
-                  <Typography variant="caption" color="textSecondary">
-                    Age
-                  </Typography>
+              <div>
+                <Typography variant="caption" color="textSecondary">
+                  Age
+                </Typography>
 
-                  <Typography variant="body1">
-                    {user.age || "Unknown"}
-                  </Typography>
-                </Box>
-              </Box>
-
-              <Box display="flex" alignItems="center" gap={2}>
-                <LocationOn sx={{ color: "primary.main" }} />
-
-                <Box>
-                  <Typography variant="caption" color="textSecondary">
-                    City - Location
-                  </Typography>
-
-                  <Typography variant="body1">
-                    {`${user.city || "Unknown"} - ${user.country || "Unknown"}`}
-                  </Typography>
-                </Box>
-              </Box>
+                <Typography>
+                  {calculateAge(user.birth_date)}
+                </Typography>
+              </div>
             </Stack>
           </Grid>
 
           <Grid size={{ xs: 12, sm: 6 }}>
-            <Stack spacing={2}>
-              <Box display="flex" alignItems="center" gap={2}>
-                <Email sx={{ color: "primary.main" }} />
+            <Stack direction="row" alignItems="center" gap={2}>
+              <LocationOn sx={{ color: "primary.main" }} />
 
-                <Box>
-                  <Typography variant="caption" color="text.secondary">
-                    Email
-                  </Typography>
+              <div>
+                <Typography variant="caption" color="textSecondary">
+                  City - Country
+                </Typography>
 
-                  <Typography variant="body1">
-                    {user.email}
-                  </Typography>
-                </Box>
-              </Box>
+                <Typography>
+                  {`${user.city || "Unknown"} - ${user.country || "Unknown"}`}
+                </Typography>
+              </div>
+            </Stack>
+          </Grid>
+        </Grid>
 
-              <Box display="flex" alignItems="center" gap={2}>
-                <Schedule sx={{ color: "primary.main" }} />
+        <Box my={2}>
+          <Divider />
+        </Box>
 
-                <Box>
-                  <Typography variant="caption" color="text.secondary">
-                    Member Since
-                  </Typography>
+        <Grid container spacing={3}>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Stack direction="row" alignItems="center" gap={2}>
+              <Phone sx={{ color: "primary.main" }} />
 
-                  <Typography variant="body1" fontWeight="medium">
-                    {user.createdAt || "Unknown"}
-                  </Typography>
-                </Box>
-              </Box>
+              <div>
+                <Typography variant="caption" color="text.secondary">
+                  Phone
+                </Typography>
+
+                <Typography>
+                  {user.phone_number || "-"}
+                </Typography>
+              </div>
+            </Stack>
+          </Grid>
+
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Stack direction="row" alignItems="center" gap={2}>
+              <Email sx={{ color: "primary.main" }} />
+
+              <div>
+                <Typography variant="caption" color="text.secondary">
+                  Email
+                </Typography>
+
+                <Typography>
+                  {user.email || "-"}
+                </Typography>
+              </div>
             </Stack>
           </Grid>
         </Grid>
@@ -124,4 +143,4 @@ function ProfileInfo(props) {
   );
 }
 
-export default ProfileInfo;
+export default ProfileInfoCard;

@@ -1,8 +1,8 @@
 const primary = {
-  dark: "#0D0D0D",
-  main: "#1A1A1A",
-  light: "#333333",
-  contrastText: "#FFFFFF",
+  dark: "#fdfdfd",
+  main: "#dadada",
+  light: "#474747",
+  contrastText: "#2b2b2b",
 };
 
 const secondary = {
@@ -42,6 +42,19 @@ const text = {
   secondary: "#B0B0B0",
 };
 
+const vehicle = {
+  car: "#276ed8",
+  truck: "#ce6820",
+  motorcycle: "#662dec",
+  bicycle: "#31e473",
+  tricycle: "#e4b936",
+  scooter: "#289db2",
+  skateboard: "#d23584",
+  bus: "#e83d3d",
+  tram: "#46b8ac",
+  train: "#4f51c6",
+};
+
 const colorsDark = {
   primary,
   secondary,
@@ -50,6 +63,7 @@ const colorsDark = {
   background,
   mode: "dark",
   text,
+  vehicle,
   action: {
     disabledBackground: "rgba(255, 255, 255, 0.12)",
   },

@@ -23,7 +23,6 @@ function NumberField(props) {
   const handleChange = newValue => (!newValue || /^[\d]*$/.test(newValue)) && onChange(newValue || null);
   const errorText = errors?.[name];
 
-  // TODO: Remove this try to find a better way to handle this
   const errorContext = errorText?.message && typeof errorText.message === "object" && { context: errorText.message.context };
 
   return (
@@ -35,8 +34,8 @@ function NumberField(props) {
       margin="normal"
       variant="outlined"
       error={!!errorText}
-      value={value ?? ""}
-      onChange={event => handleChange(event.target.value)}
+      value={value ?? 0}
+      onChange={event => handleChange(Number(event.target.value))}
       helperText={errorContext || (errorText && errorText.message) || helperText}
       onPaste={event => {
         event.preventDefault();
