@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "install": "npx rimraf backend/node_modules frontend/node_modules backend/package-lock.json frontend/package-lock.json frontend/.next && npm --prefix backend install && npm --prefix frontend install",
+    "docker": "docker compose up -d",
+    "reset": "docker compose down -v && npx rimraf backend/node_modules frontend/node_modules && npm --prefix backend install && npm --prefix frontend install && docker compose up -d",
+    "resetdocker": "docker compose down -v && docker compose up -d"
+  }
+}

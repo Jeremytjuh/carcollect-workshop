@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
+    "paths": {
+      "#constants/*": ["./src/utils/constants/*"],
+      "#graphql/*": ["./src/graphql/*"],
+      "#helpers/*": ["./src/utils/helpers/*"],
+      "#modules/*": ["./src/modules/*"],
+      "#security/*": ["./src/utils/security/*"],
+      "#validation/*": ["./src/utils/validation/*"]
+    }
+  }
+}

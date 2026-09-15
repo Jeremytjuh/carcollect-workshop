@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@/actions": ["./src/actions/index"],
+      "@/components": ["./src/components/index"],
+      "@/constants/*": ["./src/utils/constants/*"],
+      "@/graphql": ["./src/graphql/index"],
+      "@/helpers/*": ["./src/utils/helpers/*"],
+      "@/hooks": ["./src/hooks/index"],
+      "@/lang": ["./src/lang/index"],
+      "@/layouts": ["./src/layouts/index"],
+      "@/public/*": ["./public/*"],
+    }
+  },
+  "exclude": [
+    "./node_modules",
+    "./.next"
+  ],
+  "include": [
+    "./src/**/*"
+  ]
+}
