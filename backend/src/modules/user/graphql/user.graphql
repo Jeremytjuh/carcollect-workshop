@@ -29,4 +29,5 @@ input MeInput {
   email: String
   phone_number: Int
   birth_date: Date
+  image: String
 }

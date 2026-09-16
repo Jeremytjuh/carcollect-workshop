@@ -4,7 +4,7 @@ extend type Query {
 }
 
 extend type Mutation {
-  createVehicle(dataInput: VehicleInput!): Vehicle
+  createVehicle(dataInput: VehicleInput!): Boolean
   updateVehicle(vehicleId: ID!, dataInput: VehicleInput!): Vehicle
 }
 

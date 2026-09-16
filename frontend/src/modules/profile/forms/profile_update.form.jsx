@@ -4,11 +4,8 @@ import { Fragment } from "react";
 
 // Core
 import { Alert, DialogActions, DialogContent, DialogTitle, Grid } from "@mui/material";
+import { DateField, TextField } from "@/fields";
 import { Button } from "@/components";
-import { /* NumberField, */ /* DateField, */ TextField } from "@/fields";
-
-// Utils
-import { setUpdateUserValues } from "./_default_values";
 
 // GraphQL
 import { UPDATE_ME } from "@/graphql";
@@ -26,8 +23,14 @@ function ProfileUpdateForm(props) {
 
   const [updateUser] = useMutation(UPDATE_ME);
 
-  const { control, handleSubmit, formState, /* setValue, */ setError } = useForm({
-    defaultValues: setUpdateUserValues(user),
+  const { control, handleSubmit, formState, setValue, setError } = useForm({
+    defaultValues: {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      birth_date: user.birth_date,
+      image: user.image,
+    },
     mode: "onChange",
   });
 
@@ -35,13 +38,7 @@ function ProfileUpdateForm(props) {
     try {
       await updateUser({
         variables: {
-          dataInput: {
-            first_name: values.first_name,
-            last_name: values.last_name,
-            email: values.email,
-            // birth_date: values.birth_date,
-            // phone_number: user.phone_number,
-          },
+          dataInput: values,
         },
       });
 
@@ -82,25 +79,33 @@ function ProfileUpdateForm(props) {
               <TextField
                 name="email"
                 label="Email"
-                placeholder="joe.doe@mail.com"
+                placeholder="jesse.doe@mail.com"
                 control={control}
               />
             </Grid>
 
-            {/* <Grid size={6}>
-              <NumberField
-                name="phone_number"
-                label="Phone"
+            <Grid size={6}>
+              <TextField
+                name="image"
+                label="Image"
                 control={control}
               />
-            </Grid> */}
+            </Grid>
 
-            {/* <Grid size={6}>
+            <Grid size={6}>
               <DateField
                 name="birth_date"
                 label="Date of Birth"
                 control={control}
                 setValue={setValue}
+              />
+            </Grid>
+
+            {/* <Grid size={6}>
+              <TextField
+                name="phone_number"
+                label="Phone"
+                control={control}
               />
             </Grid> */}
           </Grid>

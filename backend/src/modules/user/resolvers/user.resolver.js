@@ -18,7 +18,7 @@ const me = async (root, args, { req, next }) => {
 /* Update me - updates the current user */
 const updateMe = async (root, { dataInput }, { req, next }) => {
   try {
-    const updatedUser = await UserModel.findByIdAndUpdate(req.session.userId, dataInput, { new: true });
+    const updatedUser = await UserModel.findByIdAndUpdate(req.session.userId, dataInput, { runValidators: true, returnDocument: "after" });
     return updatedUser;
   } catch (error) {
     return next(error);

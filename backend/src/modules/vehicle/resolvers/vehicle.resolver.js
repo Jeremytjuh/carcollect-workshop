@@ -33,23 +33,23 @@ const createVehicle = async (root, { dataInput }, { req, next }) => {
   try {
     const currentUser = await UserModel.findById(req.session.userId);
 
-    const vehicle = await VehicleModel.create({
+    const createdVehicle = await VehicleModel.create({
       ...dataInput,
       created_by: currentUser,
     });
 
-    return vehicle;
+    return createdVehicle;
   } catch (error) {
     return next(error);
   }
 };
 
 /* Updates an existing vehicle */
-const updateVehicle = async (root, { dataInput }, { next }) => {
+const updateVehicle = async (root, { vehicleId, dataInput }, { next }) => {
   try {
-    const vehicle = await VehicleModel.findByIdAndUpdate(dataInput);
+    const updatedVehicle = await VehicleModel.findByIdAndUpdate(vehicleId, dataInput, { runValidators: true, returnDocument: "after" });
 
-    return vehicle;
+    return updatedVehicle;
   } catch (error) {
     return next(error);
   }

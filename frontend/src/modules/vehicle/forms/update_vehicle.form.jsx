@@ -1,3 +1,4 @@
+import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { Fragment } from "react";
 
@@ -5,18 +6,33 @@ import { Fragment } from "react";
 import { Button, DialogActions, DialogContent, Grid } from "@mui/material";
 import { TextField } from "@/fields";
 
-// Utils
-import { setUpdateVehicleValues } from "./_default_values";
+// GraphQL
+import { UPDATE_VEHICLE } from "@/graphql";
 
 function UpdateVehicleForm(props) {
   const { vehicle, onClose } = props;
 
+  const [updateVehicle] = useMutation(UPDATE_VEHICLE);
+
   const { control, handleSubmit } = useForm({
-    defaultValues: setUpdateVehicleValues(vehicle),
+    defaultValues: {
+      name: vehicle.name,
+      description: vehicle.description,
+      brand: vehicle.brand,
+      model: vehicle.model,
+      version: vehicle.version,
+      type: vehicle.type,
+      license_plate: vehicle.license_plate,
+    },
   });
 
-  const handleSubmitForm = values => {
-    console.log(values);
+  const handleSubmitForm = async values => {
+    await updateVehicle({
+      variables: {
+        vehicleId: vehicle.id,
+        dataInput: values,
+      },
+    });
     onClose();
   };
 
