@@ -7,4 +7,9 @@
   },
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "javascript.suggestionActions.enabled": false,
+  "eslint.format.enable": true,
+  "eslint.codeActionsOnSave.rules": null,
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+  },
 }
