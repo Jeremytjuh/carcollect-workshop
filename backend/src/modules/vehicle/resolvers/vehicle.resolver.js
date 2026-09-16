@@ -33,12 +33,12 @@ const createVehicle = async (root, { dataInput }, { req, next }) => {
   try {
     const currentUser = await UserModel.findById(req.session.userId);
 
-    const createdVehicle = await VehicleModel.create({
+    await VehicleModel.create({
       ...dataInput,
       created_by: currentUser,
     });
 
-    return createdVehicle;
+    return true;
   } catch (error) {
     return next(error);
   }
