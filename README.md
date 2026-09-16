@@ -68,3 +68,13 @@ Mac
 - Install NodeJS LTS: https://nodejs.org/en/download
   - in case npm execute not allowed: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
 - npm run install; npm run docker
+
+
+```
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension vscode-icons-team.vscode-icons
+code --install-extension kumar-harsh.graphql-for-vscode
+code --install-extension esbenp.prettier-vscode
+code --install-extension christian-kohler.path-intellisense
+code --install-extension aaron-bond.better-comments
+```
