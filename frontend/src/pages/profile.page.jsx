@@ -1,12 +1,12 @@
 import { useMutation, useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 
 // Core
 import { Alert, Box, Button, Card, CardActions, CardContent, CardHeader, Divider, Grid, Stack, Typography } from "@mui/material";
 import { Edit } from "@mui/icons-material";
-import { NumberField, TextField } from "@/fields";
 import { DefaultLayout } from "@/layouts";
+import { TextField } from "@/fields";
 
 import ProfileInfoCardCard from "../modules/profile/profile_info_card";
 
@@ -21,16 +21,20 @@ function ProfilePage() {
 
   const [updateUser] = useMutation(UPDATE_ME);
 
-  const { control, handleSubmit, formState, setError } = useForm({
-    defaultValues: {
-      first_name: user?.first_name,
-      last_name: user?.last_name,
-      email: user?.email,
-      birth_date: user?.birth_date,
-      image: user?.image,
-    },
+  const { control, handleSubmit, formState, reset, setError } = useForm({
     mode: "onChange",
   });
+
+  useEffect(() => {
+    if (!loading) {
+      reset({
+        first_name: user?.first_name,
+        last_name: user?.last_name,
+        bio: user?.bio,
+        image: user?.image,
+      });
+    }
+  }, [user]);
 
   const handleSubmitForm = async values => {
     try {
@@ -39,6 +43,7 @@ function ProfilePage() {
           dataInput: values,
         },
       });
+      setEditState(false);
     } catch (error) {
       setError("submitForm", { message: error || "AA0x00" });
     }
@@ -103,13 +108,13 @@ function ProfilePage() {
                   </Grid>
 
                   <Grid size={6}>
-                    {/* Email */}
+                    {/* Username field */}
                   </Grid>
 
                   <Grid size={6}>
-                    <NumberField
-                      name="phone_number"
-                      label="Phone number"
+                    <TextField
+                      name="bio"
+                      label="Bio"
                       control={control}
                       disabled={!editState}
                     />
@@ -157,7 +162,7 @@ function ProfilePage() {
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={() => handleSubmit(handleSubmitForm)}
+                    onClick={handleSubmit(handleSubmitForm)}
                   >
                     Save
                   </Button>
