@@ -25,9 +25,9 @@ export default [
           map: [
             ["#constants", "./src/utils/constants"],
             ["#graphql", "./src/graphql"],
-            ["#helpers", "./src/utils/helpers"],
             ["#modules", "./src/modules"],
             ["#security", "./src/utils/security"],
+            ["#utils", "./src/utils"],
             ["#validation", "./src/utils/validation"],
           ]
         }

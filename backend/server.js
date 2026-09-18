@@ -1,11 +1,9 @@
-import cors from "cors";
 import helmet from "helmet";
 import express from "express";
 import mongoose from "mongoose";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 
-import { corsOptions } from "#helpers/cors.helper.js";
 import { executableSchema } from "#graphql/index.js";
 import packageJson from "./package.json" with { type: "json" };
 
@@ -22,10 +20,6 @@ Server.use(helmet({
   contentSecurityPolicy: env === "local" ? false : undefined,
   crossOriginEmbedderPolicy: env === "local" ? false : undefined,
 }));
-
-// Cors
-// -------------------------------------------------------------
-Server.use(cors(corsOptions));
 
 // Parse JSON and URL-encoded via req.body
 // -------------------------------------------------------------

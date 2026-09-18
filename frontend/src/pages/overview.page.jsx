@@ -7,8 +7,8 @@ import { Add } from "@mui/icons-material";
 import { DefaultLayout, OverviewPageSkeleton } from "@/layouts";
 import { Button } from "@/components";
 
-import OverviewItemCard from "../../modules/overview/components/overview_item_card";
-import CreateVehicleForm from "../../modules/vehicle/forms/create_vehicle.form";
+import OverviewItemCard from "../modules/overview/components/overview_item_card";
+import CreateVehicleForm from "../modules/vehicle/forms/create_vehicle.form";
 
 // GraphQL
 import { GET_VEHICLES } from "@/graphql";

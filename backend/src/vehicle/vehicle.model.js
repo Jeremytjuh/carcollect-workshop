@@ -1,15 +1,12 @@
 import mongoose from "mongoose";
 
-// Utils
-import { VEHICLE_TYPE } from "../utils/constants/vehicle.const.js"
-
 const schema = new mongoose.Schema({
   name: String,
   description: String,
   brand: String,
   model: String,
   version: String,
-  type: { type: String, enum: Object.values(VEHICLE_TYPE) },
+  type: String,
   license_plate: String,
   image: String,
 

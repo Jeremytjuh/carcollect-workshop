@@ -1,5 +1,5 @@
 // Models
-import UserModel from "../models/user.model.js";
+import UserModel from "./user.model.js";
 
 // Query
 // ----------------------------------------------------------------

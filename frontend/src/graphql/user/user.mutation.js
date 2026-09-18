@@ -12,7 +12,7 @@ import { gql } from "@apollo/client";
 export const UPDATE_ME = gql`
   mutation updateMe($dataInput: MeInput) {
     updateMe(dataInput: $dataInput) {
-      # id
+      id
       email
       first_name
       last_name

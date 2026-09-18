@@ -1,16 +1,22 @@
+import fs from "fs";
 import gql from "graphql-tag";
+import { fileURLToPath } from "node:url";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { mergeTypeDefs, mergeResolvers } from "@graphql-tools/merge";
 
 // Modules Resolvers | Schemas
-import { userSchemas, userResolvers } from "#modules/user/index.js";
-import { vehicleSchemas, vehicleResolvers } from "#modules/vehicle/index.js";
+import vehicleResolver from "../vehicle/vehicle.resolver.js";
+import userResolver from "../user/user.resolver.js";
+
+function loadGraphQLFile(baseDirectory, filePath) {
+  const url = new URL(filePath, baseDirectory);
+  const content = fs.readFileSync(fileURLToPath(url), "utf8");
+  return gql`${content}`;
+}
 
 const rootSchema = gql`
-  # {Root Schema}
   scalar Date
-  scalar Upload
-
+  
   type Query {
     root: String
   }
@@ -21,13 +27,13 @@ const rootSchema = gql`
 `;
 
 const resolvers = [
-  ...userResolvers,
-  ...vehicleResolvers,
+  userResolver,
+  vehicleResolver,
 ];
 
 const typeDefs = [
-  ...userSchemas,
-  ...vehicleSchemas,
+  loadGraphQLFile(import.meta.url, "../user/user.graphql"),
+  loadGraphQLFile(import.meta.url, "../vehicle/vehicle.graphql"),
   rootSchema,
 ];
 

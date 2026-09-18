@@ -7,9 +7,9 @@ import { Edit } from "@mui/icons-material";
 import { DefaultLayout } from "@/layouts";
 import { Button } from "@/components";
 
-import ProfilePreferenceCard from "../../modules/profile/components/profile_preference_card";
-import ProfileInfoCardCard from "../../modules/profile/components/profile_info_card";
-import ProfileUpdateForm from "../../modules/profile/forms/profile_update.form";
+import ProfilePreferenceCard from "../modules/profile/components/profile_preference_card";
+import ProfileInfoCardCard from "../modules/profile/components/profile_info_card";
+import ProfileUpdateForm from "../modules/profile/forms/profile_update.form";
 
 // GraphQL
 import { GET_ME } from "@/graphql";

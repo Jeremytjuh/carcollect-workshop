@@ -14,6 +14,7 @@ export const GET_VEHICLES = gql`
       license_plate
       image
       created_by {
+        id
         first_name
         last_name
         email
@@ -46,6 +47,7 @@ export const GET_VEHICLE = gql`
       license_plate
       image
       created_by {
+        id
         first_name
         last_name
         email

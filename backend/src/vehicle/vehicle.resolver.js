@@ -1,6 +1,6 @@
 // Models
-import UserModel from "#modules/user/models/user.model.js";
-import VehicleModel from "../models/vehicle.model.js";
+import VehicleModel from "./vehicle.model.js";
+import UserModel from "../user/user.model.js";
 
 // Query
 // ----------------------------------------------------------------
@@ -18,7 +18,7 @@ const getVehicles = async (root, args, { next }) => {
 /* Retrieves a single vehicle */
 const getVehicle = async (root, { vehicleId }, { next }) => {
   try {
-    const vehicle = await VehicleModel.findById(vehicleId);
+    const vehicle = await VehicleModel.findById(vehicleId).populate("created_by");
 
     return vehicle;
   } catch (error) {
