@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
+// https://mui.com/material-ui/api/container/
+
 function TutorialPage() {
-  const name = "John";
+  const name = "Jeremy";
 
   const [textColor, setTextColor] = useState("black");
 
