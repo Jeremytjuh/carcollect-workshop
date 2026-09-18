@@ -28,10 +28,12 @@ function ProfilePage() {
   useEffect(() => {
     if (!loading) {
       reset({
-        first_name: user?.first_name,
-        last_name: user?.last_name,
-        bio: user?.bio,
-        image: user?.image,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        bio: user.bio,
+        image: user.image,
+        city: user.city,
+        country: user.country,
       });
     }
   }, [user]);
