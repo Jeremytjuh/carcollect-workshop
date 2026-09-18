@@ -43,13 +43,12 @@ function OverviewPage() {
                 {vehicle.name}
               </Typography>
 
-              <Button
-                variant="contained"
-                color="secondary"
+              <button
+                type="button"
                 onClick={() => alert("This feature is not yet implemented")}
               >
                 <ArrowForward />
-              </Button>
+              </button>
             </div>
 
             <Typography>
