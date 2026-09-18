@@ -50,7 +50,7 @@
     "max-len": ["warn", 190, 2],
 
     // Warn for `console.log` and allow info and error
-    "no-console": ["warn", { "allow": ["info", "error"] }],
+    "no-console": ["off", { "allow": ["info", "error"] }],
 
     // We allow param reassign, less confusion and overhead
     "no-param-reassign": "off",
