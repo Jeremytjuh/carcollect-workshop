@@ -5,11 +5,21 @@ import Image from "next/image";
 import { useTheme } from "@mui/material/styles";
 import { ArrowForward, Delete } from "@mui/icons-material";
 import { Box, Card, CardActions, CardContent, CardHeader, Divider, Grid, Stack, Typography } from "@mui/material";
+
+// ? MUI Button docs: https://v7.mui.com/material-ui/api/button/
+// * Useful Button props: color, variant, onClick
+
+// Bonus component suggestions
+// * Avatar, Icon, Chip
+// ? MUI Icons docs: https://v7.mui.com/material-ui/icons/
+// ? Available MUI icons: https://v7.mui.com/material-ui/material-icons/
+
 import { DefaultLayout, OverviewPageSkeleton } from "@/layouts";
 
 // GraphQL
 import { GET_VEHICLES } from "@/graphql";
 
+// Style
 import styles from "./overview.style";
 
 function OverviewPage() {
@@ -42,6 +52,8 @@ function OverviewPage() {
               <CardHeader
                 title={vehicle.name}
                 action={(
+                  // * Button to adjust
+                  // ? String interpolation docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
                   <button
                     type="button"
                     onClick={() => alert("This feature is not yet implemented")}
@@ -62,15 +74,15 @@ function OverviewPage() {
 
                   <div css={classes.description}>
                     <Typography>
-                      License plate: {vehicle.license_plate}
+                      {`License plate: ${vehicle.license_plate}`}
                     </Typography>
 
                     <Typography>
-                      Type: {vehicle.type}
+                      {`Type: ${vehicle.type}`}
                     </Typography>
 
                     <Typography>
-                      Created by: {vehicle.created_by?.first_name} {vehicle.created_by?.last_name}
+                      {`Created by: ${vehicle.created_by?.first_name} ${vehicle.created_by?.last_name}`}
                     </Typography>
 
                     <Image
