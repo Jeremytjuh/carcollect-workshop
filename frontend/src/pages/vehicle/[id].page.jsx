@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 // Core
 import { useTheme } from "@mui/material/styles";
 import { Box, Button, Card, CardContent, CardHeader, CardMedia, Chip, Divider, Grid, Stack, Typography } from "@mui/material";
-import { ArrowBack, Delete, Edit } from "@mui/icons-material";
+import { ArrowBack, Delete } from "@mui/icons-material";
 import { DefaultLayout } from "@/layouts";
 
 // GraphQL

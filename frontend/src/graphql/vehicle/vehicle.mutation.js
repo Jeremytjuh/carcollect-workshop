@@ -7,7 +7,7 @@ export const CREATE_VEHICLE = gql`
   }
 `;
 
-/* Creates a new vehicle */
+/* Updates a vehicle */
 export const UPDATE_VEHICLE = gql`
   mutation updateVehicle($vehicleId: ID!, $dataInput: VehicleInput!) {
     updateVehicle(vehicleId: $vehicleId, dataInput: $dataInput) {

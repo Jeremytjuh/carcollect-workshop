@@ -8,7 +8,7 @@ import { Edit } from "@mui/icons-material";
 import { DefaultLayout } from "@/layouts";
 import { TextField } from "@/fields";
 
-import ProfileInfoCardCard from "../modules/profile/profile_info_card";
+import ProfileInfoCard from "../modules/profile/profile_info_card";
 
 // GraphQL
 import { GET_ME, UPDATE_ME } from "@/graphql";
@@ -27,6 +27,7 @@ function ProfilePage() {
 
   useEffect(() => {
     if (!loading) {
+      // Default form values
       reset({
         first_name: user.first_name,
         last_name: user.last_name,
@@ -53,6 +54,8 @@ function ProfilePage() {
 
   if (loading) return "Loading profile...";
 
+  console.log(user);
+
   return (
     <DefaultLayout title="Profile">
       <Stack direction="row" justifyContent="space-between" alignItems="center" gap={2}>
@@ -67,7 +70,7 @@ function ProfilePage() {
 
       <Grid container spacing={3}>
         <Grid size={12}>
-          <ProfileInfoCardCard user={user} />
+          <ProfileInfoCard user={user} />
         </Grid>
 
         {/* Edit Form */}
