@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
-import colorsDefault from "./colors/colors_default";
-import colorsDark from "./colors/colors_dark";
+import colorsDefault from "./colors_default";
+import colorsDark from "./colors_dark";
 import overrides from "./overrides";
 
 const themeVariants = {

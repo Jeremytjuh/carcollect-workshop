@@ -1,6 +1,3 @@
-// Core
-import { useTheme } from "@mui/material/styles";
-
 // Style
 import styles from "./main.style";
 
@@ -9,8 +6,7 @@ function Main(props) {
     children,
   } = props;
 
-  const theme = useTheme();
-  const classes = styles(theme);
+  const classes = styles();
 
   return (
     <main css={classes.main}>

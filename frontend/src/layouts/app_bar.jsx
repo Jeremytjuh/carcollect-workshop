@@ -7,7 +7,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { Avatar, Button, IconButton, AppBar as MuiAppBar, Stack, Toolbar, Tooltip, Typography } from "@mui/material";
 import { Chat, Commute, Search } from "@mui/icons-material";
 
-import SwitchThemeField from "../../../components/field/switch_field/switch_theme.field";
+import SwitchThemeField from "../components/field/switch_field/switch_theme.field";
 
 // GraphQL
 import { GET_ME } from "@/graphql";

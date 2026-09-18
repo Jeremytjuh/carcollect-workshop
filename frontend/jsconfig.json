@@ -10,7 +10,6 @@
       "@/constants/*": ["./src/utils/constants/*"],
       "@/fields": ["./src/components/field/index"],
       "@/graphql": ["./src/graphql/index"],
-      "@/helpers/*": ["./src/utils/helpers/*"],
       "@/hooks": ["./src/hooks/index"],
       "@/lang": ["./src/lang/index"],
       "@/layouts": ["./src/layouts/index"],
@@ -23,5 +22,5 @@
   ],
   "include": [
     "./src/**/*"
-  ]
+, "helpers"  ]
 }

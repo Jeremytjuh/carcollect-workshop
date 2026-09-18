@@ -1,15 +1,11 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
 // Core
 import { useTheme } from "@mui/material/styles";
-import { Box, Card, CardContent, CardHeader, CardMedia, Chip, Dialog, DialogTitle, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardHeader, CardMedia, Chip, Divider, Grid, Stack, Typography } from "@mui/material";
 import { ArrowBack, Delete, Edit } from "@mui/icons-material";
 import { DefaultLayout } from "@/layouts";
-import { Button } from "@/components";
-
-import UpdateVehicleForm from "../../modules/vehicle/forms/update_vehicle.form";
 
 // GraphQL
 import { GET_VEHICLE } from "@/graphql";
@@ -17,8 +13,6 @@ import { GET_VEHICLE } from "@/graphql";
 function VehicleDetailPage() {
   const theme = useTheme();
   const router = useRouter();
-
-  const [dialogState, setDialogState] = useState();
 
   const vehicleId = router.query.id;
   const { data, loading } = useQuery(GET_VEHICLE, {
@@ -50,24 +44,14 @@ function VehicleDetailPage() {
             </Button>
           </div>
 
-          <Stack direction="row" gap={1}>
-            <Button
-              variant="outlined"
-              color="error"
-              endIcon={<Delete />}
-              onClick={() => alert("This feature is not yet implemented")}
-            >
-              Delete
-            </Button>
-
-            <Button
-              endIcon={<Edit />}
-              variant="contained"
-              onClick={() => setDialogState(true)}
-            >
-              Edit vehicle
-            </Button>
-          </Stack>
+          <Button
+            variant="outlined"
+            color="error"
+            endIcon={<Delete />}
+            onClick={() => alert("This feature is not yet implemented")}
+          >
+            Delete
+          </Button>
         </Stack>
       </Stack>
 
@@ -124,24 +108,6 @@ function VehicleDetailPage() {
           </Card>
         </Grid>
       </Grid>
-
-      <Dialog
-        open={dialogState}
-        onClose={() => setDialogState(false)}
-        maxWidth="md"
-        fullWidth
-      >
-        <DialogTitle>
-          <Typography variant="h6">
-            Edit vehicle
-          </Typography>
-        </DialogTitle>
-
-        <UpdateVehicleForm
-          vehicle={vehicle}
-          onClose={() => setDialogState(false)}
-        />
-      </Dialog>
     </DefaultLayout>
   );
 }

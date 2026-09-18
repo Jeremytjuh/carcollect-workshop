@@ -5,7 +5,7 @@ import Router from "next/router";
 import { BaseLayout } from "@/layouts";
 
 // Utils
-import { createEmotionCache } from "@/helpers/styling.helper";
+import { createEmotionCache } from "../../helpers/styling.helper";
 import MasterProvider from "../providers/master.provider";
 
 // Style

@@ -1,7 +1,6 @@
 import { InMemoryCache, makeVar } from "@apollo/client";
 
-// Utils
-import { isServer } from "@/helpers/api.helper";
+const isServer = typeof window === "undefined";
 
 /* Reactive variables - Storing local state outside of the Apollo Client cache */
 export const isLoadingVar = makeVar(false);

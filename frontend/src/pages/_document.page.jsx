@@ -4,7 +4,7 @@ import createEmotionServer from "@emotion/server/create-instance";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
 // Utils
-import { createEmotionCache } from "../utils/helpers/styling.helper";
+import { createEmotionCache } from "../../helpers/styling.helper";
 
 class CustomDocument extends Document {
   render() {

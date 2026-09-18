@@ -2,13 +2,11 @@ import { useQuery } from "@apollo/client";
 import { useState } from "react";
 
 // Core
-import { Box, Dialog, DialogTitle, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, Grid, Stack, Typography } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import { DefaultLayout, OverviewPageSkeleton } from "@/layouts";
-import { Button } from "@/components";
 
-import OverviewItemCard from "../modules/overview/components/overview_item_card";
-import CreateVehicleForm from "../modules/vehicle/forms/create_vehicle.form";
+import OverviewItemCard from "../modules/overview/overview_item_card";
 
 // GraphQL
 import { GET_VEHICLES } from "@/graphql";
@@ -16,7 +14,7 @@ import { GET_VEHICLES } from "@/graphql";
 function OverviewPage() {
   const [dialogState, setDialogState] = useState(false);
 
-  const { data, loading, refetch } = useQuery(GET_VEHICLES);
+  const { data, loading } = useQuery(GET_VEHICLES);
   const vehicles = data?.getVehicles || [];
 
   if (loading) return <OverviewPageSkeleton />;
@@ -58,10 +56,9 @@ function OverviewPage() {
           Create vehicle
         </DialogTitle>
 
-        <CreateVehicleForm
-          onClose={() => setDialogState(false)}
-          refetch={refetch}
-        />
+        <DialogContent>
+          This is where
+        </DialogContent>
       </Dialog>
     </DefaultLayout>
   );

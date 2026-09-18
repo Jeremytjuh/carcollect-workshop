@@ -2,15 +2,16 @@ import { useMemo } from "react";
 import { ApolloClient, ApolloLink, createHttpLink } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 
-import { API_URL, isServer } from "@/helpers/api.helper";
 import packageInfo from "../../package.json";
 import { cache } from "./cache";
 
 let apolloClient;
 
+const isServer = typeof window === "undefined";
+
 /* GraphQL link / with uploads Link */
 const httpLink = createHttpLink({
-  uri: operation => `${API_URL}/graphql?operationName=${encodeURIComponent(operation.operationName)}`,
+  uri: operation => `http://localhost:8000/graphql?operationName=${encodeURIComponent(operation.operationName)}`,
   credentials: "include",
 });
 

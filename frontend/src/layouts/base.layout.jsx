@@ -2,8 +2,8 @@ import { Fragment } from "react";
 import Head from "next/head";
 
 // Core
-import { AppBar } from "./components/app_bar";
-import { Main } from "./components/main";
+import AppBar from "./app_bar";
+import Main from "./main";
 
 function BaseLayout(props) {
   const { children } = props;
