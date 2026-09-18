@@ -5,7 +5,7 @@ import { Avatar, Box, Card, CardContent, CardMedia, Chip, Divider, Grid, Stack, 
 import { LocationOn } from "@mui/icons-material";
 
 // Style
-import styles from "./profile_info_card.style";
+import styles from "./profile/profile_info_card.style";
 
 function ProfileInfoCard(props) {
   const { user } = props;

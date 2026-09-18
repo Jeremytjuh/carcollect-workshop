@@ -8,7 +8,7 @@ import { Edit } from "@mui/icons-material";
 import { DefaultLayout } from "@/layouts";
 import { TextField } from "@/fields";
 
-import ProfileInfoCard from "../modules/profile/profile_info_card";
+import ProfileInfoCard from "../modules/profile_info_card";
 
 // GraphQL
 import { GET_ME, UPDATE_ME } from "@/graphql";

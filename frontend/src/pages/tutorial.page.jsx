@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
+import Copyright from "../modules/copyright";
+// import { Container } from "@mui/material";
+// import { useRouter } from "next/router";
 
-// https://mui.com/material-ui/api/container/
+// ? MUI Container docs: https://v7.mui.com/material-ui/api/container/
+// ? MUI Button docs: https://v7.mui.com/material-ui/api/button/
+// * Useful Button props: color, variant, onClick
+
+// ? Next Router docs: https://nextjs.org/docs/pages/api-reference/functions/use-router
 
 function TutorialPage() {
   const name = "John";
@@ -11,10 +18,19 @@ function TutorialPage() {
     console.log("The text color was changed to:", textColor);
   }, [textColor]);
 
+  // const router = useRouter();
+
   return (
     <div>
       <h1>Welcome to the workshop, {name}!</h1>
-      <div style={{ color: textColor }}>This is what we will be editing first!</div>
+
+      <p style={{ color: textColor }}>
+        This is what we will be editing first!
+      </p>
+
+      {/* Place Button(s) below */}
+
+      <Copyright color="" />
     </div>
   );
 }

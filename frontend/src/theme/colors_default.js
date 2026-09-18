@@ -6,9 +6,9 @@ const primary = {
 };
 
 const secondary = {
-  dark: "#0C6E73",
-  main: "#119DA4",
-  light: "#B2E7EA",
+  dark: "#0C6E73", // Give this a darker shade of your favorite color
+  main: "#119DA4", // Set this to your favorite color
+  light: "#B2E7EA", // Give this a lighter shade of your favorite color
   contrastText: "#FFFFFF",
 };
 
