@@ -26,34 +26,15 @@ function VehicleDetailPage() {
 
   return (
     <DefaultLayout title={vehicle.name}>
-      <Stack alignItems="flex-start" gap={1}>
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="flex-start"
-          gap={2}
-          width="100%"
-        >
-          <div>
-            <Typography variant="h4">
-              {vehicle.name}
-            </Typography>
+      <div>
+        <Typography variant="h4">
+          {vehicle.name}
+        </Typography>
 
-            <Button startIcon={<ArrowBack />} onClick={() => router.push("/overview")}>
-              Back to list
-            </Button>
-          </div>
-
-          <Button
-            variant="outlined"
-            color="error"
-            endIcon={<Delete />}
-            onClick={() => alert("This feature is not yet implemented")}
-          >
-            Delete
-          </Button>
-        </Stack>
-      </Stack>
+        <Button startIcon={<ArrowBack />} onClick={() => router.push("/overview")}>
+          Back to list
+        </Button>
+      </div>
 
       <Box my={2}>
         <Divider />
@@ -61,7 +42,7 @@ function VehicleDetailPage() {
 
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, md: 6 }}>
-          <Card sx={{ height: "100%" }}>
+          <Card variant="outlined" sx={{ height: "100%" }}>
             <CardHeader title="Quick information" />
 
             <CardContent>
@@ -93,13 +74,13 @@ function VehicleDetailPage() {
         </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
-          <Card sx={{ height: "100%" }}>
+          <Card variant="outlined" sx={{ height: "100%" }}>
             <CardMedia sx={{ height: 450 }} image={vehicle.image} />
           </Card>
         </Grid>
 
         <Grid size={12}>
-          <Card sx={{ height: "100%" }}>
+          <Card variant="outlined" sx={{ height: "100%" }}>
             <CardHeader title="Description" />
 
             <CardContent>

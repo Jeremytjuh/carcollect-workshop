@@ -85,7 +85,11 @@ function OverviewPage() {
 
               <CardActions>
                 <Stack direction="row" justifyContent="flex-end" width="100%">
-                  <button type="button" style={{ color: "red", border: "1px solid red", borderRadius: theme.shape.borderRadius }}>
+                  <button
+                    type="button"
+                    onClick={() => alert("This feature is not yet implemented")}
+                    style={{ color: "red", border: "1px solid red", borderRadius: theme.shape.borderRadius }}
+                  >
                     <Delete />
                   </button>
                 </Stack>
