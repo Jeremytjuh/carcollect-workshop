@@ -7,7 +7,7 @@ function OverviewPageSkeleton() {
   return (
     <DefaultLayout>
       <Stack direction="row" justifyContent="space-between">
-        <Typography disableTypography>
+        <Typography>
           <Skeleton height={60} width={200} />
         </Typography>
 
@@ -19,7 +19,7 @@ function OverviewPageSkeleton() {
       </Box>
 
       <Grid container spacing={2}>
-        {Array.from({ length: 4 }).map(index => (
+        {Array.from({ length: 4 }).map((_, index) => (
           <Grid key={`${index + 1}`} size={{ xs: 12 }}>
             <Skeleton height={110} variant="rounded" />
           </Grid>

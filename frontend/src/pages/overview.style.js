@@ -1,7 +1,3 @@
-// Assignment 4
-// ----------------------------------------------------------------
-// Expand upon the current list item card; Styling, content, functionality etc.
-
 const styles = theme => ({
   flexBox: {
     display: "flex",

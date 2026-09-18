@@ -1,23 +1,27 @@
 import { useQuery } from "@apollo/client";
-import { useState } from "react";
+import Image from "next/image";
 
 // Core
-import { Box, Button, Dialog, DialogContent, DialogTitle, Divider, Grid, Stack, Typography } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
+import { ArrowForward } from "@mui/icons-material";
+import { Box, Button, Divider, Grid, Stack, Typography } from "@mui/material";
 import { DefaultLayout, OverviewPageSkeleton } from "@/layouts";
-
-import OverviewItemCard from "../modules/overview/overview_item_card";
 
 // GraphQL
 import { GET_VEHICLES } from "@/graphql";
 
+import styles from "./overview.style";
+
 function OverviewPage() {
-  const [dialogState, setDialogState] = useState(false);
+  const theme = useTheme();
+  const classes = styles(theme);
 
   const { data, loading } = useQuery(GET_VEHICLES);
   const vehicles = data?.getVehicles || [];
 
   if (loading) return <OverviewPageSkeleton />;
+
+  console.log(vehicles);
 
   return (
     <DefaultLayout title="Overview">
@@ -25,14 +29,6 @@ function OverviewPage() {
         <Typography variant="h4">
           Overview
         </Typography>
-
-        <Button
-          variant="contained"
-          onClick={() => setDialogState(true)}
-          endIcon={<Add />}
-        >
-          Add vehicle
-        </Button>
       </Stack>
 
       <Box my={2}>
@@ -42,24 +38,43 @@ function OverviewPage() {
       <Grid container spacing={2}>
         {vehicles.map(vehicle => (
           <Grid key={vehicle.id} size={12}>
-            <OverviewItemCard vehicle={vehicle} />
+            <div css={classes.flexBox}>
+              <Typography variant="h5">
+                {vehicle.name}
+              </Typography>
+
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => alert("This feature is not yet implemented")}
+              >
+                <ArrowForward />
+              </Button>
+            </div>
+
+            <Typography>
+              License plate: {vehicle.license_plate}
+            </Typography>
+
+            <Typography>
+              Type: {vehicle.type}
+            </Typography>
+
+            <Stack flexDirection="column">
+              <Typography>
+                Created by: {vehicle.created_by?.first_name} {vehicle.created_by?.last_name}
+              </Typography>
+
+              <Image
+                src={vehicle.created_by?.image}
+                alt="Created by user image"
+                width={64}
+                height={64}
+              />
+            </Stack>
           </Grid>
         ))}
       </Grid>
-
-      <Dialog
-        open={dialogState}
-        onClose={() => setDialogState(false)}
-        fullWidth
-      >
-        <DialogTitle>
-          Create vehicle
-        </DialogTitle>
-
-        <DialogContent>
-          This is where
-        </DialogContent>
-      </Dialog>
     </DefaultLayout>
   );
 }
