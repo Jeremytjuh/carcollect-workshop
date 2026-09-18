@@ -1,9 +1,7 @@
 // Models
 import UserModel from "./user.model.js";
 
-// Query
-// ----------------------------------------------------------------
-/* Retrieves the current session of the user */
+/* Me - Retrieves the current session of the user */
 const me = async (root, args, { req, next }) => {
   try {
     const currentUser = await UserModel.findById(req.session.userId);
@@ -13,8 +11,6 @@ const me = async (root, args, { req, next }) => {
   }
 };
 
-// Mutation
-// ----------------------------------------------------------------
 /* Update me - updates the current user */
 const updateMe = async (root, { dataInput }, { req, next }) => {
   try {

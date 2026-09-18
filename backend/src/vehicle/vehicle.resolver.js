@@ -2,8 +2,6 @@
 import VehicleModel from "./vehicle.model.js";
 import UserModel from "../user/user.model.js";
 
-// Query
-// ----------------------------------------------------------------
 /* Retrieves all vehicles */
 const getVehicles = async (root, args, { next }) => {
   try {
@@ -26,8 +24,6 @@ const getVehicle = async (root, { vehicleId }, { next }) => {
   }
 };
 
-// Mutation
-// ----------------------------------------------------------------
 /* Creates a new vehicle */
 const createVehicle = async (root, { dataInput }, { req, next }) => {
   try {

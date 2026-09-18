@@ -7,16 +7,10 @@ export const GET_ME = gql`
       id
       first_name
       last_name
-      email
-      phone_number
-      birth_date
-      status
-      bio
-      tagline
       username
-      favorite_types
-      city
+      bio
       country
+      city
       image
     }
   }

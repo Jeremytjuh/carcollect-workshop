@@ -16,7 +16,7 @@ function loadGraphQLFile(baseDirectory, filePath) {
 
 const rootSchema = gql`
   scalar Date
-  
+
   type Query {
     root: String
   }

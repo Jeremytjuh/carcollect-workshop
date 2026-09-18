@@ -1,3 +1,4 @@
+import cors from "cors";
 import helmet from "helmet";
 import express from "express";
 import mongoose from "mongoose";
@@ -19,6 +20,14 @@ const Server = express();
 Server.use(helmet({
   contentSecurityPolicy: env === "local" ? false : undefined,
   crossOriginEmbedderPolicy: env === "local" ? false : undefined,
+}));
+
+// Cors
+// -------------------------------------------------------------
+Server.use(cors({
+  credentials: true,
+  maxAge: 2592000,
+  origin: "http://localhost:3000"
 }));
 
 // Parse JSON and URL-encoded via req.body

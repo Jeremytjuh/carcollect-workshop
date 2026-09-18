@@ -9,7 +9,7 @@ extend type Mutation {
 }
 
 type Vehicle {
-  id: ID!
+  id: ID
   name: String
   description: String
   brand: String
