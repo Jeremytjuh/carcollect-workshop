@@ -1,4 +1,11 @@
 const overrides = palette => ({
+  MuiButton: {
+    styleOverrides: {
+      root: {
+        textTransform: "initial",
+      },
+    },
+  },
   MuiDialogContent: {
     defaultProps: {
       dividers: true,

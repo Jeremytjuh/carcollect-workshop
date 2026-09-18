@@ -105,6 +105,8 @@
     // css Required for Emotion
     "react/no-unknown-property": ["error", { "ignore": ["css"] }],
 
+    "react/jsx-one-expression-per-line": "off",
+
     // Specific import order per project
     "import/order": ["error", {
       "pathGroups": [
