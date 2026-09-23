@@ -1,0 +1,29 @@
+extend type Query {
+  me: User
+}
+
+extend type Mutation {
+  updateMe(dataInput: MeInput): User
+}
+
+type User {
+  id: ID
+  first_name: String
+  last_name: String
+  username: String
+  bio: String
+  country: String
+  city: String
+  image: String
+  favorites: [ID]
+}
+
+input MeInput {
+  first_name: String
+  last_name: String
+  username: String
+  bio: String
+  country: String
+  city: String
+  image: String
+}

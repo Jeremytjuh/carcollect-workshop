@@ -1,0 +1,16 @@
+{
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    ".package-lock.json": true,
+  },
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "javascript.suggestionActions.enabled": false,
+  "eslint.format.enable": true,
+  "eslint.codeActionsOnSave.rules": null,
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+  },
+  "files.eol": "\n"
+}

@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "install": "npx rimraf backend/node_modules frontend/node_modules backend/package-lock.json frontend/package-lock.json frontend/.next && npm --prefix backend install && npm --prefix frontend install",
+    "docker": "docker compose up -d",
+    "reset": "docker compose down -v && npx rimraf backend/node_modules frontend/node_modules && npm --prefix backend install && npm --prefix frontend install && docker compose up -d",
+    "reset-docker": "docker compose down -v && docker compose up -d",
+    "seed": "docker exec mongodb-workshop mongosh workshop --eval \"db.users.drop(); db.vehicles.drop()\" && docker exec -i mongodb-workshop mongosh workshop < backend/config/mongodb/seed.js"
+  }
+}

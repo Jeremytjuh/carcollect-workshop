@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Backend",
+      "address": "localhost",
+      "port": 16000,
+      "localRoot": "${workspaceFolder}/backend",
+      "remoteRoot": "/app",
+      "restart": true
+    }
+  ]
+}

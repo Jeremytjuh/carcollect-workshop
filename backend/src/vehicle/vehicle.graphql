@@ -1,0 +1,33 @@
+extend type Query {
+  getVehicles: [Vehicle]
+  getVehicle(vehicleId: ID!): Vehicle
+}
+
+extend type Mutation {
+  createVehicle(dataInput: VehicleInput!): Boolean
+  deleteVehicle(vehicleId: ID!): Boolean
+}
+
+type Vehicle {
+  id: ID
+  name: String
+  brand: String
+  model: String
+  version: String
+  type: String
+  license_plate: String
+  image: String
+  
+  # Mongoose schemas
+  created_by: User
+}
+
+input VehicleInput {
+  name: String
+  brand: String
+  model: String
+  version: String
+  type: String
+  license_plate: String
+  image: String
+}
